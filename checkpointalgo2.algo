@@ -1,0 +1,60 @@
+ALGORITHM fetchArray
+VAR
+    set1, set2: ARRAY_OF INTEGER;
+    sum, i, j : INTEGER;
+BEGIN
+    sum:=0;
+    FOR i FROM 0 TO set1.length-1 STEP 1  DO
+        read(set1[i]);
+    END_FOR
+    FOR j FROM 0 TO set2.length-1 STEP 1  DO
+        read(set2[j]);
+    END_FOR
+
+    FOR i FROM 0 TO set1.length STEP 1  DO
+        FOR j FROM 0 TO set2.length STEP 1  DO
+
+            IF ((set1[i]!=set2[j])=TRUE) THEN
+                sum:=sum+set1[i];
+            END_IF
+        END_FOR
+    END_FOR
+
+    FOR j FROM 0 TO set2.length STEP 1  DO
+        FOR i FROM 0 TO set1.length STEP 1  DO
+
+            IF ((set1[i]!=set2[j])=TRUE) THEN
+                sum:=sum+set2[j];
+            END_IF
+        END_FOR
+    END_FOR
+    write(sum);
+END
+
+ALGORITHM fetchHtab
+VAR
+    tab1, tab2: HASH_TABLE<INTEGER,INTEGER>;
+    cle1, valeur1, cle2, valeur2, sum2:INTEGER;
+BEGIN
+    tab1.insert(cle1, valeur1);
+    tab2.insert(cle2, valeur2);
+    FOR cle1 FROM 0 TO tab1.length-1 STEP 1  DO
+        FOR cle2 FROM 0 TO tab2.length-1 STEP 1  DO
+            IF (tab1.get(cle1)!=tab2.get(cle2)) THEN
+                sum2+:= tab1.get(valeur1);
+            END_IF
+        END_FOR     
+        
+    END_FOR
+
+    FOR cle2 FROM 0 TO tab2.length-1 STEP 1  DO
+        FOR cle1 FROM 0 TO tab1.length-1 STEP 1  DO
+            IF (tab1.get(cle1)!=tab2.get(cle2)) THEN
+                sum2+:= tab2.get(valeur2);
+            END_IF
+        END_FOR     
+        
+    END_FOR
+    write(sum2);
+    
+END
